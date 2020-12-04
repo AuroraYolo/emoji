@@ -7284,7 +7284,7 @@ class Emoji
     {
         $constantName = static::convertCharacterNameToConstantName($characterName);
 
-        if (!defined("static::{$constantName}")) {
+        if (! defined("static::{$constantName}")) {
             throw UnknownCharacter::create($characterName);
         }
 
@@ -7318,7 +7318,7 @@ class Emoji
 
     protected static function convertToSnakeCase(string $value): string
     {
-        if (!ctype_lower($value)) {
+        if (! ctype_lower($value)) {
             $value = preg_replace('/\s+/', '', $value);
 
             $value = mb_strtolower(preg_replace('/([^0-9])(?=[0-9])/', '$1'.'_', preg_replace('/(.)(?=[A-Z])/', '$1'.'_', $value)));
